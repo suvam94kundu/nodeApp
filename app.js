@@ -6,7 +6,10 @@ var setUpController = require('./controllers/seedDbController');
 
 app.set('view engine', 'ejs');
 var port = 8085;
-mongo.connect(config.getDbConnections(), { useNewUrlParser: true });
+mongo.connect(config.getDbConnections(), { useNewUrlParser: true }).then(
+    () => { console.log('connected') },
+    err => { console.log(err) }
+);;
 setUpController(app);
 var server = app.listen(port, function(err) {
     var host = server.address().address;
