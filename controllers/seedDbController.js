@@ -1,24 +1,28 @@
 var todo = require('../model/todoModel');
 module.exports = function(app) {
-    app.get('/api/seedDatabase', function(req, res) {
+    app.get('/seedDatabase', function(req, res) {
+        console.log("request" + req);
         var seedData = [{
                 task: "Lightbox",
                 isCompleted: false,
-                userName: "developer 1"
+                userName: "developer1"
             },
             {
                 task: "Kitchen Sink",
                 isCompleted: false,
-                userName: "Developer 1"
+                userName: "Developer5"
             },
             {
                 task: "node to-do",
                 isCompleted: false,
-                userName: "Developer 1"
+                userName: "Developer81"
             }
         ];
         todo.create(seedData, function(err, msg) {
             res.send(msg);
-        })
+        });
+    });
+    app.get('/ab', function(req, res) {
+        res.send("done");
     });
 };
